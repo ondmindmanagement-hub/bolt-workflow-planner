@@ -1,4 +1,6 @@
 <!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <title>BOLT Workflow Planner</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,14 +11,16 @@ button{padding:12px 18px;border:0;border-radius:999px;background:#111;color:#fff
 .card{margin-top:18px;padding:18px;background:#f4f4f4;border-radius:16px}
 small{color:#666}
 </style>
+</head>
+<body>
 <h1>BOLT Workflow Planner</h1>
 <p>Turn one task into a small governed AI workflow before you build it.</p>
-<label>Task</label>
+<label for="task">Task</label>
 <textarea id="task" rows="4" placeholder="Example: summarize support tickets and draft a reply"></textarea>
-<label>What action would be risky if automated?</label>
+<label for="risk">What action would be risky if automated?</label>
 <input id="risk" placeholder="Example: sending the reply">
 <button onclick="plan()">Create plan</button>
-<div id="result"></div>
+<div id="result" role="status" aria-live="polite"></div>
 <script>
 function plan(){
  const task=document.getElementById('task').value.trim();
@@ -33,3 +37,5 @@ function plan(){
 }
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 </script>
+</body>
+</html>
